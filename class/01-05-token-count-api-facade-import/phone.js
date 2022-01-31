@@ -28,6 +28,10 @@ export function getToken(digit){
 
 
 export function sendTokenToSMS(phoneNum,result){
+
+
+
+
     console.log(`${phoneNum} 번호로 인증번호 ${result} 전송합니다!!!!!!!!`)
 }
 

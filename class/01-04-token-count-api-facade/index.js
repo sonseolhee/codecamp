@@ -1,7 +1,7 @@
 // console.log("안녕하세요~~")
+import axios from "axios"
 
-
-function checkValidationPhone(phoneNum){
+export function checkValidationPhone(phoneNum){
     if(phoneNum.length !== 10 && phoneNum.length !== 11){
         console.log('에러 : 핸드폰 번호를 정확히 입력해주세요')
         return false
@@ -11,7 +11,7 @@ function checkValidationPhone(phoneNum){
 }
 
 
-function getToken(digit){
+export function getToken(digit){
    
     if(digit === undefined){
         console.log('에러 : 갯수를 정확히 입력해주세요.')
@@ -28,8 +28,27 @@ function getToken(digit){
     return result
 }
 
-function sendTokenToSMS(phoneNum,result){
-    console.log(`${phoneNum} 번호로 인증번호 ${result} 전송합니다!!!!!!!!`)
+
+
+export function sendTokenToSMS(phoneNum,result){
+
+    axios.post("https://api-sms.cloud.toast.com/sms/v3.0/appKeys/EV5nTfgx0p27AL7j/sender/sms",
+    {
+        body : "안녕하세요. 인증번호는 {123456}입니다.",
+        sendNo : "01067411673",
+        recipientList : [{internationalRecipientNo:"01067411673" }]
+    },
+    {
+        headers: {
+            'X-Secret-Key': "0xVpaQ1W",
+            'Content-Type': 'application/json;charset=UTF-8'
+        }
+    }
+    
+    
+    )
+
+    console.log("===================전송끝=====================")
 }
 
 

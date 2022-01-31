@@ -38,7 +38,7 @@ app.get('/boards', function (req, res) {
 })
 
 
-app.post('/boards', function (req, res) {
+app.post('/boards', function (req, res) { 
 
     console.log(req.body)
     res.send('!!!POST COMPLETED!!!')

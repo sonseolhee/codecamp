@@ -10,7 +10,6 @@ const getUser = () => {
 
 }
 
-let { data } = obj
 
 const createUserDiv = (data) => {
   const userTableItem = document.createElement('div')

@@ -57,7 +57,6 @@ const myResolvers = {
       
       console.log(args)
 
-
       return "등록에 성공하였습니다."
     },
 

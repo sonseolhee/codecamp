@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Coffee {
+  name: String!
+  price: Int!
+  kcal: Int!
+  fat: Int!
+  protein: Int!
+  salt: Int!
+  sugar: Int!
+  caffeine: Int!
+}
+
+type Query {
+  fetchCoffees: [Coffee!]!
+}
+
+type Mutation {
+  createStarbucks(createCoffeeInput: CreateCoffeeInput!): String!
+}
+
+input CreateCoffeeInput {
+  name: String!
+  price: Float!
+  kcal: Float!
+  fat: Float!
+  protein: Float!
+  salt: Float!
+  sugar: Float!
+  caffeine: Float!
+}

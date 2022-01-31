@@ -26,7 +26,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(options)))   
 app.get('/users', function (req, res) {
 
     res.send([
-        { 
+        {
             email : "aaa@gmail.com", 
             name : "철수",
             phone : "01012345678",
@@ -69,7 +69,7 @@ app.get('/users', function (req, res) {
 app.get('/5', function (req, res) {
 
     res.send([
-        { name: '아메리카노_!', kcal: 15 },
+        { name: '아메리카노_!', kcal: 15 }, 
         { name: '아메리카노_A', kcal: 15 },
         { name: '아메리카노_B', kcal: 25 },
         { name: '아메리카노_C', kcal: 25 },
