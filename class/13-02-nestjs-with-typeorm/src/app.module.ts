@@ -6,7 +6,7 @@ import { Board } from './apis/board/entities/board.entity';
 
 @Module({
   imports: [
-    BoardModule, //
+    BoardModule, 
     GraphQLModule.forRoot({
       autoSchemaFile: 'src/common/graphql/schema.gql',
     }),
