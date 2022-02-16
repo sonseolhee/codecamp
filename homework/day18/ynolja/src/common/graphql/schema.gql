@@ -1,0 +1,84 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  name: String!
+  nickName: String!
+  phoneNumber: String!
+  email: String!
+  password: String!
+  coupons: [Coupon!]!
+}
+
+type Coupon {
+  id: String!
+  name: String!
+  contents: String!
+  discount_amount: Int!
+  condition: Int!
+  status: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  users: [User!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Place {
+  id: String!
+  name: String!
+  address: String!
+}
+
+type Usagetype {
+  id: String!
+  name: String!
+  startTime: DateTime!
+  endTime: DateTime!
+}
+
+type Room {
+  id: String!
+  name: String!
+  description: String!
+  inventory: Int!
+  basicPeopleNumber: Int
+  maxPeopleNumber: Int
+  price: Int!
+  checkInDate: DateTime
+  checkOutDate: DateTime
+  place: Place
+  usageType: Usagetype
+}
+
+type Query {
+  fetchRoomList: [Room!]!
+  fetchRoom(roomId: String!): Room!
+}
+
+type Mutation {
+  createRoom(createRoomInput: CreateRoomInput!): Room!
+  updateRoom(updateRoomInput: UpdateRoomInput!, roomId: String!): Room!
+}
+
+input CreateRoomInput {
+  name: String!
+  description: String!
+  inventory: Int
+  basicPeopleNumber: Int
+  maxPeopleNumber: Int
+  price: Int!
+  checkInDate: DateTime
+  checkOutDate: DateTime
+}
+
+input UpdateRoomInput {
+  name: String!
+  description: String!
+  price: Int!
+}

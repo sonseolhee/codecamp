@@ -1,0 +1,159 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Coupon {
+  id: String!
+  name: String!
+  contents: String
+  discount_amount: Int!
+  condition: String!
+  status: String!
+  startDate: DateTime!
+  expireDate: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type PlaceTag {
+  id: String!
+  name: String!
+  places: [Place!]!
+}
+
+type Place {
+  id: String!
+  name: String!
+  address: String!
+  placeTags: [PlaceTag!]!
+}
+
+type Usagetype {
+  id: String!
+  name: String!
+  startTime: DateTime!
+  endTime: DateTime!
+}
+
+type Room {
+  id: String!
+  name: String!
+  description: String!
+  inventory: Int!
+  basicPeopleNumber: Int
+  maxPeopleNumber: Int
+  price: Int!
+  deletedAt: DateTime
+  place: Place
+  usageType: Usagetype
+}
+
+type User {
+  id: String!
+  name: String!
+  nickName: String!
+  phoneNumber: String!
+  email: String!
+  deletedAt: DateTime!
+}
+
+type Query {
+  fetchRoomList: [Room!]!
+  fetchRoomListWithDeleted: [Room!]!
+  fetchRoom(roomId: String!): Room!
+  fetchUserList: User!
+  fetchUser(userId: String!): User!
+  fetchCouponList: [Coupon!]!
+  fetchCoupon(couponId: String!): Coupon!
+}
+
+type Mutation {
+  createPlace(createPlaceInput: CreatePlaceInput!): Place!
+  deletePlace(placeId: String!): Boolean!
+  createRoom(createRoomInput: CreateRoomInput!): Room!
+  updateRoom(updateRoomInput: UpdateRoomInput!, roomId: String!): Room!
+  deleteRoom(roomId: String!): Boolean!
+  restoreRoom(roomId: String!): Boolean!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserId: UpdateUserInput!, userId: String!): User!
+  deleteUser(userId: String!): Boolean!
+  createCoupon(createCouponInput: CreateCouponInput!): Coupon!
+  updateCoupon(updateCouponInput: UpdateCouponInput!, couponId: String!): Coupon!
+  deleteCoupon(couponId: String!): Boolean!
+}
+
+input CreatePlaceInput {
+  name: String!
+  address: String!
+  placeTags: [String!]!
+}
+
+input CreateRoomInput {
+  name: String!
+  description: String!
+  inventory: Int
+  basicPeopleNumber: Int
+  maxPeopleNumber: Int
+  price: Int!
+  roomUsagetype: UsagetypeInput!
+  roomPlaceId: String!
+}
+
+input UsagetypeInput {
+  name: String!
+  startTime: DateTime!
+  endTime: DateTime!
+}
+
+input UpdateRoomInput {
+  name: String!
+  description: String!
+  price: Int!
+}
+
+input CreateUserInput {
+  name: String!
+  nickName: String!
+  phoneNumber: String!
+  email: String!
+  deletedAt: DateTime!
+}
+
+input UpdateUserInput {
+  name: String!
+  nickName: String!
+  phoneNumber: String!
+  deletedAt: DateTime!
+}
+
+input CreateCouponInput {
+  name: String!
+  contents: String
+  discount_amount: Int!
+  condition: String!
+  status: String!
+  startDate: DateTime!
+  expireDate: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
+}
+
+input UpdateCouponInput {
+  name: String!
+  contents: String
+  discount_amount: Int!
+  condition: String!
+  status: String!
+  startDate: DateTime!
+  expireDate: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
+}
