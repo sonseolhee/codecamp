@@ -1,3 +1,4 @@
+.env*
 gcp-file-storage.json
 
 # compiled output
