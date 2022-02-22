@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>결제페이지</title>
+
+    <!-- jQuery -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+    ></script>
+    <!-- iamport.payment.js -->
+    <script
+      type="text/javascript"
+      src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
+    ></script>
+    <!-- axios cdn -->
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/axios/dist/axios.min.js"
+    ></script>
+    <!-- mypayment function -->
+    <script>
+      async function mypayment() {
+        const myAmount = Number(document.getElementById("aaa").value);
+
+        IMP.init("imp12744039"); // 예: imp00000000
+        IMP.request_pay(
+          {
+            // param
+            pg: "html5_inicis",
+            pay_method: "card",
+            // merchant_uid: "ORD20180131-0000011",
+            name: "노르웨이 회전 의자",
+            amount: myAmount,
+            buyer_email: "gildong@gmail.com",
+            buyer_name: "홍길동",
+            buyer_tel: "010-4242-4242",
+            buyer_addr: "서울특별시 강남구 신사동",
+            buyer_postcode: "01181",
+          },
+          async function (rsp) {
+            // callback
+            if (rsp.success) {
+              // 결제 성공 시 로직,
+              alert("결제성공");
+              console.log("💛 결제결과 ", rsp);
+
+              const data = await axios.post(
+                "http://localhost:3000/graphql",
+                {
+                  query: `
+                    mutation{
+                      createPointTransaction( impUid: "${rsp.imp_uid}", amount:${rsp.paid_amount}){
+                        id
+                      }
+                    }
+                  `,
+                },
+                {
+                  headers: {
+                    Authorization:
+                      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVsbWExNjczQG5hdmVyLmNvbSIsInN1YiI6IjA4ODAzZTI3LWUzYTItNDUwZS04NzAwLWEyMzY5MjEyNjM5NSIsImlhdCI6MTY0NTA2NDc0NywiZXhwIjoxNjQ1MDY4MzQ3fQ.SXq7702aptytxQXMCD5iTBsQeTptuCHeO559V2DkDx8",
+                  },
+                }
+              );
+            } else {
+              // 결제 실패 시 로직,
+            }
+          }
+        );
+      }
+    </script>
+  </head>
+  <body>
+    결제금액: <input type="text" id="aaa" />
+    <button onclick="mypayment()">결제하기</button>
+  </body>
+</html>
