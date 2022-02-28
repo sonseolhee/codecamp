@@ -16,7 +16,7 @@ export class BoardService {
         writer: 'writer2',
         title: 'title2',
         contents: 'contents2',
-      },
+      }, 
     ];
   }
 

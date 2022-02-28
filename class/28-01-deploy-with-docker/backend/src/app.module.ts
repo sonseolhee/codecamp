@@ -9,6 +9,8 @@ import { ProductCategoryModule } from './apis/productCategory/productCategory.mo
 import { UserModule } from './apis/user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { FileModule } from './apis/file/file.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -25,20 +27,21 @@ import { FileModule } from './apis/file/file.module';
     GraphQLModule.forRoot({
       autoSchemaFile: 'src/common/graphql/schema.gql',
       context: ({ req, res }) => ({ req, res }),
+      playground: false, //todo: CICD
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '10.32.48.3',
+      host: 'mydatabase.seolheeson.shop',
       port: 3306,
       username: 'root',
       password: 'root',
       database: 'myproject',
       entities: [__dirname + '/apis/**/*.entity.*'],
-      synchronize: true,
+      synchronize: false, //todo: migration
       logging: true,
     }),
   ],
-  // controllers: [AppController],
-  // providers: [AppService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
