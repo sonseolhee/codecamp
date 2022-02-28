@@ -1,0 +1,208 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  name: String!
+  nickName: String
+  phoneNumber: String!
+  email: String!
+  deletedAt: DateTime
+  orderTotalAmount: Int
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Coupon {
+  id: String!
+  name: String!
+  contents: String
+  discount_amount: Int!
+  condition: String!
+  status: String!
+  startDate: DateTime!
+  expireDate: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
+}
+
+type Place {
+  id: String!
+  name: String!
+  address: String!
+  placeTags: [PlaceTag!]!
+}
+
+type PlaceTag {
+  id: String!
+  name: String!
+  places: [Place!]!
+}
+
+type Usagetype {
+  id: String!
+  name: String!
+  startTime: DateTime!
+  endTime: DateTime!
+}
+
+type Room {
+  id: String!
+  name: String!
+  description: String!
+  inventory: Int!
+  basicPeopleNumber: Int
+  maxPeopleNumber: Int
+  price: Int!
+  deletedAt: DateTime
+  place: Place
+  usageType: Usagetype
+}
+
+type OrderTransaction {
+  id: String!
+  impUid: String!
+  amount: Int!
+  status: ORDER_TRANSACTION_STATUS_ENUM!
+  createdAt: DateTime!
+  user: User!
+  room: Room!
+  checkOutDate: DateTime!
+  checkInDate: DateTime!
+}
+
+enum ORDER_TRANSACTION_STATUS_ENUM {
+  PAYMENT
+  CANCEL
+}
+
+type RoomImage {
+  id: String!
+  url: String!
+  isMain: Boolean!
+  room: Room!
+}
+
+type Query {
+  fetchRoomList: [Room!]!
+  fetchRoomListWithDeleted: [Room!]!
+  fetchRoom(roomId: String!): Room!
+  fetchUserList: User!
+  fetchUser: User!
+  fetchCouponList: [Coupon!]!
+  fetchCoupon(couponId: String!): Coupon!
+}
+
+type Mutation {
+  uploadFile(files: [Upload!]!): [String!]!
+  createRoomImage(createRoomImageInput: CreateRoomImageInput!): [RoomImage!]!
+  updateRoomImage(createRoomImageInput: CreateRoomImageInput!): [RoomImage!]!
+  login(password: String!, email: String!): String!
+  restoreAccessToken: String!
+  createPlace(createPlaceInput: CreatePlaceInput!): Place!
+  deletePlace(placeId: String!): Boolean!
+  createRoom(createRoomInput: CreateRoomInput!): Room!
+  updateRoom(updateRoomInput: UpdateRoomInput!, roomId: String!): Room!
+  deleteRoom(roomId: String!): Boolean!
+  restoreRoom(roomId: String!): Boolean!
+  createOrderTransaction(checkOutDate: DateTime!, checkInDate: DateTime!, roomId: String!, amount: Float!, impUid: String!): OrderTransaction!
+  cancelOrder(impUid: String!): OrderTransaction!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUserPassword(updatePasswordInput: UpdatePasswordInput!): String!
+  updateUser(updateUserId: UpdateUserInput!, userId: String!): User!
+  deleteUser: Boolean!
+  createCoupon(createCouponInput: CreateCouponInput!): Coupon!
+  updateCoupon(updateCouponInput: UpdateCouponInput!, couponId: String!): Coupon!
+  deleteCoupon(couponId: String!): Boolean!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input CreateRoomImageInput {
+  urls: [String!]!
+  isMain: [Boolean!]
+  roomId: String!
+}
+
+input CreatePlaceInput {
+  name: String!
+  address: String!
+  placeTags: [String!]!
+}
+
+input CreateRoomInput {
+  name: String!
+  description: String!
+  inventory: Int
+  basicPeopleNumber: Int
+  maxPeopleNumber: Int
+  price: Int!
+  roomUsagetype: UsagetypeInput!
+  roomPlaceId: String!
+}
+
+input UsagetypeInput {
+  name: String!
+  startTime: DateTime!
+  endTime: DateTime!
+}
+
+input UpdateRoomInput {
+  name: String!
+  description: String!
+  price: Int!
+}
+
+input CreateUserInput {
+  name: String!
+  nickName: String
+  phoneNumber: String!
+  email: String!
+  deletedAt: DateTime
+  orderTotalAmount: Int
+  password: String!
+}
+
+input UpdatePasswordInput {
+  password: String!
+}
+
+input UpdateUserInput {
+  name: String!
+  nickName: String
+  phoneNumber: String!
+  deletedAt: DateTime
+  orderTotalAmount: Int
+}
+
+input CreateCouponInput {
+  name: String!
+  contents: String
+  discount_amount: Int!
+  condition: String!
+  status: String!
+  startDate: DateTime!
+  expireDate: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
+}
+
+input UpdateCouponInput {
+  name: String!
+  contents: String
+  discount_amount: Int!
+  condition: String!
+  status: String!
+  startDate: DateTime!
+  expireDate: DateTime!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
+}

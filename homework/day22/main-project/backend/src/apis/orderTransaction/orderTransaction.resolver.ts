@@ -1,16 +1,15 @@
-import { UseGuards } from "@nestjs/common";
-import { Args, Mutation, Resolver } from "@nestjs/graphql";
-import { GqlAuthAccessGuard } from "src/common/auth/gql-auth.guards";
-import { CurrentUser, ICurrentUser } from "src/common/auth/gql-user.param";
-import { OrderTransaction } from "./entities/orderTransaction.entity";
-import { OrderTransactionService } from "./orderTransaction.service";
+import { UseGuards } from '@nestjs/common';
+import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { GqlAuthAccessGuard } from 'src/common/auth/gql-auth.guards';
+import { CurrentUser, ICurrentUser } from 'src/common/auth/gql-user.param';
+import { OrderTransaction } from './entities/orderTransaction.entity';
+import { OrderTransactionService } from './orderTransaction.service';
 
 @Resolver()
 export class OrderTransactionResolver {
-  
   constructor(
-    private readonly orderTransactionService: OrderTransactionService,//
-  ){}
+    private readonly orderTransactionService: OrderTransactionService, //
+  ) {}
 
   @UseGuards(GqlAuthAccessGuard)
   @Mutation(() => OrderTransaction)
@@ -21,17 +20,23 @@ export class OrderTransactionResolver {
     @Args('roomId') roomId: string,
     @Args('checkInDate') checkInDate: Date,
     @Args('checkOutDate') checkOutDate: Date,
-  ){
-    return await this.orderTransactionService.create({ 
-      impUid, 
-      amount, 
-      currentUser, 
-      roomId, 
-      checkInDate, 
-      checkOutDate
-    })
+  ) {
+    return await this.orderTransactionService.create({
+      impUid,
+      amount,
+      currentUser,
+      roomId,
+      checkInDate,
+      checkOutDate,
+    });
   }
 
+  @UseGuards(GqlAuthAccessGuard)
+  @Mutation()
+  async paymentComplete(
+    @Args('impUid') impUid: string,
+    @Args('merchantUid') merchantUid: string,
+  ) {
+    // await this.orderTransactionService.fetchPaymentInfo();
+  }
 }
-
-

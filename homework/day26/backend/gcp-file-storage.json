@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "graphite-guard-341008",
+  "private_key_id": "3ed56c96889de0d844ba078ddaa942a84160ac96",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDSdEKxvBWmqHYL\ncwStMeJs81J5TzR5WrrIJaAVXZSJdHI5CQY/Wq+Ytrc25HNt/hpvVnGFF9a9Sk1o\n71yXzWpl0AvlybIIuiGH7Dz4i+zfyO6AUaAC7uJ33nAVHvM4nnFMdsrGve3VltwB\n33CMrA9JgNDav7tqwiuHHO7Vhx114q+7N8EFuzzU/w/xeIADOGjB/KRt+R9zP0mf\nopGpReXOjKfJ6bf0t0AyweQwtV0+I2ij26Hq1GZ4ourdV10ITsJS6w6dkQ7kUn4J\nrGVXQoadxDAk94QrFVrc9l9o8cHftbFazlTN90sxvRebau/16Mp85pRSciVaOiqT\nuuZZXbapAgMBAAECggEAMZ3dV3/rbtZKtlpQoPCg3GTlbdpBmdbNMIDGZCMi8OE2\nSMIa6fbcbVmuik+D80u0Ocmci+9Z3ljVNUcxgkyYqBZLp8pMoggX/a6xlTuQBhae\nPDyCSA6/79jOffxFBXU9avSazA5dMz0U85AVPeUW2ZJ4KwqHCh1rG7izij4HsRHq\nCsc5rYdgRP2sJmPWPz3mNqRmu+IlWIvDfBx61e69XC1BH6sLPe0nbT38SokTHHbP\naehuzHy2hRLPIL8z7moCI47shzmz0qxYt0URqzepFmTB1pVdYP/yCj0JW/VQgLBq\nBghk5bpdF47RUcNHcX40w3mOvaiv/V9iNqGaoHnrMQKBgQD22lWGeNkc9z/rDI/o\n+Zr4pkp0I3ooBONYHzFlfzxzOzXAnSS4hsOvMZPl8Q4rAMl1hSYUFIP1xC7giCfO\nFd2ZTsCDMX2XLIiknwgnPsDg488sicMpCbK/EPn4+L4RUlS7zVRR8iNo8or4fehv\nJVDmFvKqOd1LnD4TICNsxC5CjQKBgQDaQKUuym81am5Jl6Za6L2bPl0epAz8652B\nIt0eAgOxhUu23MYkeifmhlE9+qOjzs6+POqHRwE1pEbnh5knodZVveoocH762fds\nPIj0ixr3n6Yca5VQxOC6NqtWTPdSrM+CT6+LkDzhopd9XSfz78O2LWps5pqOUkAH\ngytLfOMLjQKBgDhKx9AXhONPGtteDP9C1G05dqcPZA72NmXlDx2nK0DX0sUu0K3n\nxX4RHzoDg4iY8FgFWg6gMwt7hnkbc4BSiisow0vnoE02EZ8AyRox/EgMizUL4V5d\nYM6jb22wQ5+tl7cP9teNETggf0J1a+jUqKMfvozFD0rrwVgZLxrhje8NAoGBAMC8\ng+MNTCYcxiZhMLxpej+lVDCh6QJVxDLtKd29I6vaLeHfl29RHPlbtlUIiQg4sqSX\nQPmTv8KyPxdpzNuN9KylWSq7Jbe7Ut+Xmc5zJa51owjIDQVVx6tKagZ9U5AEIgBP\nBJQ4HTuZDTTdVlH6c5fnBWwEPYrfocHAmTRBpnNlAoGBAKZ6nD9zZpediij3VFV8\nbDU2Po0eFJokq7E84xan2YtTnoUzgr0/cVEicg4rljkgKaI+BKn8Gr9iDk4zosPw\nj3mk+ZcRDNGwF0uS9sxVJ6FpiBCj3gQ5Z/YQKKe7UKM/Hb3FkkTqKOjxoqUabvZC\nPq6f+jwGt/nGdoWgIexWYm7n\n-----END PRIVATE KEY-----\n",
+  "client_email": "codecamp-image-storage-serivce@graphite-guard-341008.iam.gserviceaccount.com",
+  "client_id": "107755267048753314110",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/codecamp-image-storage-serivce%40graphite-guard-341008.iam.gserviceaccount.com"
+}

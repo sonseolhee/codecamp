@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>결제페이지</title>
+
+    <!-- jQuery -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+    ></script>
+    <!-- iamport.payment.js -->
+    <script
+      type="text/javascript"
+      src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
+    ></script>
+    <!-- axios cdn -->
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/axios/dist/axios.min.js"
+    ></script>
+    <!-- mypayment function -->
+    <script>
+      async function mypayment() {
+        const myAmount = Number(document.getElementById("amount").value);
+
+        IMP.init("imp12744039"); // 예: imp00000000
+        IMP.request_pay(
+          {
+            // param
+            pg: "html5_inicis",
+            pay_method: "card",
+            name: "노르웨이 회전 의자",
+            amount: myAmount,
+            buyer_email: "elma1673@naver.com",
+            buyer_name: "손설희",
+            buyer_tel: "010-6741-1673",
+            buyer_addr: "서울특별시 강남구 신사동",
+            buyer_postcode: "01181",
+          },
+          async function (rsp) {
+            // callback
+            if (rsp.success) {
+              // 결제 성공 시 로직,
+              alert("결제성공");
+              console.log("💛 결제결과 ", rsp);
+
+              const data = await axios.post(
+                "http://localhost:3000/graphql",
+                {
+                  query: `
+                    mutation{
+                      createOrderTransaction( 
+                        impUid: "${rsp.imp_uid}",
+                        amount:${rsp.paid_amount}, 
+                        roomId: "a4c20ffb-f1e0-4c5b-ab11-2c92a9c7484d", 
+                        checkInDate:"2022-02-15", 
+                        checkOutDate:"2022-02-16"
+                      )
+                      {
+                        id
+                      }
+                    }
+                  `,
+                },
+                {
+                  headers: {
+                    Authorization:
+                      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVsbWExNjczQG5hdmVyLmNvbSIsInN1YiI6ImRhODA5ZjA2LTg0NTAtNGViNy1iYTlkLTdmMGYxOGFhODhkYyIsImlhdCI6MTY0NTE0MzAzOSwiZXhwIjoxNjQ1MTQ2NjM5fQ.7q5vN9SB9srsuAmbOr5ijHsarMZxxqIRO2WYrZk50HA",
+                  },
+                }
+              );
+            } else {
+              // 결제 실패 시 로직,
+            }
+          }
+        );
+      }
+    </script>
+  </head>
+  <body>
+    결제금액: <input type="text" id="amount" />
+    <button onclick="mypayment()">결제하기</button>
+  </body>
+</html>
