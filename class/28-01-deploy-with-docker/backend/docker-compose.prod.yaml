@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   my_backend:
-    image: asia.gcr.io/graphite-guard-341008/my_backend:1.7
+    image: asia.gcr.io/graphite-guard-341008/my_backend:2
     build:
       context: .
       dockerfile: Dockerfile
