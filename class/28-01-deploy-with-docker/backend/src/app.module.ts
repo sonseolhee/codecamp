@@ -37,7 +37,7 @@ import { AppService } from './app.service';
       password: 'root',
       database: 'myproject',
       entities: [__dirname + '/apis/**/*.entity.*'],
-      synchronize: false, //todo: migration
+      synchronize: false, //migration
       logging: true,
     }),
   ],
